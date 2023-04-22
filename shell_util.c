@@ -22,6 +22,7 @@ int parse_command(char *command)
 		{
 			return (EXTERNAL_COMMAND);
 		}
+	}
 	for (i = 0; int_cmnd[i] != NULL; i++)
 	{
 		if (_strcmp(command, int_cmnd[i]) == 0)
@@ -30,7 +31,7 @@ int parse_command(char *command)
 		}
 	}
 	path = check_path(command);
-	if (push != NULL)
+	if (path != NULL)
 	{
 		free(path);
 		return (PATH_COMMAND);
@@ -48,6 +49,7 @@ int parse_command(char *command)
 void execute_command(char **tokenized_command, int command_type)
 {
 	void (*func)(char **command);
+
 	if (command_type == EXTERNAL_COMMAND)
 	{
 		if (execve(tokenized_command[0], tokenized_command, NULL) == -1)
@@ -91,6 +93,7 @@ char *check_path(char *command)
 	char *temp, *temp2, *path_cpy;
 	char *path = _getenv("PATH");
 	int i;
+
 	if (path == NULL || _strlen(path) == 0)
 	{
 		return (NULL);
@@ -123,7 +126,7 @@ char *check_path(char *command)
  *
  * Return: pointer to the proper function, or null on fail
  */
-void (*get_func(char *comand))(char **)
+void (*get_func(char *command))(char **)
 {
 	int i;
 

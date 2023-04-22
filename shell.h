@@ -1,4 +1,3 @@
-
 #ifndef SHELL_H
 #define SHELL_H
 
@@ -44,7 +43,7 @@ extern int status;
 /*helpers*/
 void print(char *, int);
 char **tokenizer(char *, char *);
-void remove_newline(char *);
+void rem_newline(char *);
 int _strlen(char *);
 void _strcpy(char *, char *);
 
@@ -75,7 +74,7 @@ void quit(char **);
 
 /*main*/
 extern void non_interactive(void);
-extern void initializer(char **current_command, int type_command);
+extern void init(char **current_command, int type_command);
 
 #endif /*SHELL_H*/
 

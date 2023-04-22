@@ -5,7 +5,7 @@
  * @tokenized_cmnd: command entered
  * Return: empty
  */
-void env(char **tokenized _cmnd __attrribute__((unused)))
+void env(char **tokenized_cmnd __attrribute__((unused)))
 {
 	int i;
 
@@ -34,12 +34,12 @@ void quit(char **tokenized_cmnd)
 		free(tokenized_cmnd);
 		free(line);
 		free(commands);
-		free(status);
+		exit(status);
 	}
 	else if (num_token == 2)
 	{
 		arg = _atoi(tokenized_cmnd[1]);
-		if (arg == 1)
+		if (arg == -1)
 		{
 			print(shell_name, STDERR_FILENO);
 			print(": 1: exit: Illegal number:", STDERR_FILENO);
@@ -52,7 +52,7 @@ void quit(char **tokenized_cmnd)
 			free(line);
 			free(tokenized_cmnd);
 			free(commands);
-			exit(args);
+			exit(arg);
 		}
 	}
 	else

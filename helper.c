@@ -66,15 +66,15 @@ char **tokenizer(char *str, char *delim)
 	char *token = NULL;
 	char *saved_ptr = NULL;
 
-	token = _strtok(str, delim, &saved_ptr);
+	token = strtok_r(str, delim, &saved_ptr);
 	while (token != NULL)
 	{
 		av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
 		av[num_delim] = token;
-		token = _strtok(NULL, delim, &saved_ptr);
+		token = _strtok_r(NULL, delim, &saved_ptr);
 		num_delim++;
 	}
-	av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) *(num_delim +1));
+	av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
 	av[num_delim] = NULL;
 	return (av);
 }
