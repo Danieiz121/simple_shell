@@ -5,7 +5,7 @@
  * @tokenized_cmnd: command entered
  * Return: empty
  */
-void env(char **tokenized_cmnd __attrribute__((unused)))
+void env(char **tokenized_cmndi __attribute__((unused)))
 {
 	int i;
 
